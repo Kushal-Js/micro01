@@ -23,4 +23,12 @@ jobs:
   deploy:
 
     needs: build
-    runs: 
+    runs-on: [aws-ec2]
+    steps:
+      - name: Pull Image from Docker Hub
+        run: docker pull Kushal-Js/micro01:latest
+      - name: Delete old container
+        run: docker rm -f micro01-container
+      - name: Run docker container
+        run: docker run -p -d 3000:3000 -name micro01-container Kushal-Js/micro01:latest
+    
