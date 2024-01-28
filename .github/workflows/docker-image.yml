@@ -15,9 +15,9 @@ jobs:
     - name: Login to Docker Hub
       run: docker login -u ${{ secrets.DOCKER_USERNAME}} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Build Docker Image
-      run: docker build -t kushal-js/micro01 .
+      run: docker build -t kushalgaur123/micro01 .
     - name: Publish Docker Image
-      run: docker push kushal-js/micro01:latest
+      run: docker push kushalgaur123/micro01:latest
 
 
   deploy:
@@ -26,9 +26,9 @@ jobs:
     runs-on: [aws-ec2]
     steps:
       - name: Pull Image from Docker Hub
-        run: docker pull kushal-js/micro01:latest
+        run: docker pull kushalgaur123/micro01:latest
       - name: Delete old container
         run: docker rm -f micro01-container
       - name: Run docker container
-        run: docker run -p -d 3000:3000 -name micro01-container kushal-js/micro01:latest
+        run: docker run -p -d 3000:3000 -name micro01-container kushalgaur123/micro01:latest
     
