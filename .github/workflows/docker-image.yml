@@ -27,7 +27,7 @@ jobs:
     steps:
       - name: Pull Image from Docker Hub
         run: docker pull kushalgaur123/micro01:latest
-      - name: Delete old container
+      - name: Delete old docker container
         run: docker rm -f micro01-container
       - name: Run docker container
         run: docker run -p -d 3000:3000 --name micro01-container kushalgaur123/micro01:latest
